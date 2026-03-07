@@ -1,0 +1,116 @@
+@import "tailwindcss";
+
+:root {
+  --cream:        #F5F0E8;
+  --cream-dark:   #EDE7D9;
+  --cream-border: #D9D0BC;
+  --navy:         #1B2A4A;
+  --navy-mid:     #2E4270;
+  --navy-light:   #4A6090;
+  --accent:       #2563EB;
+  --accent-warm:  #C8893A;
+  --code-bg:      #0F1A2E;
+  --code-text:    #E8EFF8;
+
+  --stripe-1: #2563EB;
+  --stripe-2: #C8893A;
+  --stripe-3: #1B2A4A;
+  --stripe-4: #D9D0BC;
+  --stripe-5: #4A6090;
+}
+
+@theme inline {
+  --color-cream:        var(--cream);
+  --color-cream-dark:   var(--cream-dark);
+  --color-cream-border: var(--cream-border);
+  --color-navy:         var(--navy);
+  --color-navy-mid:     var(--navy-mid);
+  --color-navy-light:   var(--navy-light);
+  --color-accent:       var(--accent);
+  --color-accent-warm:  var(--accent-warm);
+  --color-code-bg:      var(--code-bg);
+  --color-code-text:    var(--code-text);
+
+  --font-display:  "Cormorant Garamond", serif;
+  --font-heading:  "DM Serif Display", serif;
+  --font-body:     "Source Serif 4", serif;
+  --font-mono:     "JetBrains Mono", monospace;
+  --font-sans:     "DM Sans", sans-serif;
+}
+
+html {
+  scroll-behavior: smooth;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+body {
+  background: var(--cream);
+  color: var(--navy);
+  font-family: "Source Serif 4", serif;
+}
+
+::selection {
+  background: var(--navy);
+  color: var(--cream);
+}
+
+/* ── Signature stripe ── */
+.signature-stripe {
+  height: 3px;
+  background: linear-gradient(
+    90deg,
+    var(--stripe-1) 0%,
+    var(--stripe-1) 20%,
+    var(--stripe-2) 20%,
+    var(--stripe-2) 35%,
+    var(--stripe-3) 35%,
+    var(--stripe-3) 55%,
+    var(--stripe-4) 55%,
+    var(--stripe-4) 75%,
+    var(--stripe-5) 75%,
+    var(--stripe-5) 100%
+  );
+}
+
+/* Formula dividers */
+.formula-divider {
+  display: flex;
+  align-items: center;
+  gap: 20px;
+}
+.formula-divider::before,
+.formula-divider::after {
+  content: "";
+  flex: 1;
+  height: 1px;
+  background: var(--cream-border);
+}
+.formula-divider span {
+  font-family: "JetBrains Mono", monospace;
+  font-size: 10px;
+  color: var(--cream-border);
+  letter-spacing: 0.08em;
+  white-space: nowrap;
+}
+
+/* Floating math */
+@keyframes float-slow {
+  0%, 100% { transform: translateY(0px); }
+  50% { transform: translateY(-8px); }
+}
+@keyframes float-slower {
+  0%, 100% { transform: translateY(0px); }
+  50% { transform: translateY(-5px); }
+}
+.float-slow { animation: float-slow 9s ease-in-out infinite; }
+.float-slower { animation: float-slower 13s ease-in-out infinite; }
+
+/* Grid paper for cards */
+.grid-paper {
+  background-image:
+    linear-gradient(var(--cream-border) 1px, transparent 1px),
+    linear-gradient(90deg, var(--cream-border) 1px, transparent 1px);
+  background-size: 20px 20px;
+  background-position: -1px -1px;
+}
